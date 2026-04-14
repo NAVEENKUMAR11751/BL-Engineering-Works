@@ -1,99 +1,141 @@
+// Replaced by new structure
+const BASE = import.meta.env.BASE_URL || "/";
+
 const workData = {
-  civil: {
+  "trenching": {
+    id: 1,
     title: "Civil Works – Trenching",
+    desc: "Manual and mechanical excavation for secure cable routing.",
     images: [
-      "/work-images/civil/civil1.jpg",
-      "/work-images/civil/civil2.jpg",
-      "/work-images/civil/civil3.jpg",
+      `${BASE}assets/images/projects/trenching.jpg`,
+      `${BASE}assets/images/projects/civil/civil1.jpg`,
+      `${BASE}assets/images/projects/civil/civil2.jpg`
     ],
     items: [
-      "Manual Trenching",
-      "Mechanical Trenching (JCB)",
-      "Trench Excavation",
-      "Cable Trench Trenching & Making",
-      "RCC Trench",
-      "Trough / Duct Placing",
-      "Track Crossing",
-      "Horizontal Boring / Drilling",
-    ],
+      "Manual trenching",
+      "Mechanical trenching (JCB)",
+      "Trench excavation",
+      "Cable trench trenching & making",
+      "RCC trench",
+      "Trough / duct placing",
+      "Track crossing",
+      "Horizontal boring / drilling"
+    ]
   },
-
-  rcc: {
+  "foundations": {
+    id: 2,
     title: "Civil Works – Foundations & Structural",
+    desc: "Robust foundations for location boxes and signals.",
     images: [
-      "/work-images/rcc/rcc1.jpg",
-      "/work-images/rcc/rcc2.jpg",
-      "/work-images/rcc/rcc3.jpg",
+      `${BASE}assets/images/projects/rcc/rcc1.jpg`,
+      `${BASE}assets/images/projects/rcc/rcc2.jpg`,
+      `${BASE}assets/images/projects/civil/civil3.jpg`
     ],
     items: [
-      "Foundation Works",
-      "Structural Works",
-      "Full Location Box Foundation",
-      "Half Location Box Foundation",
-      "Signal Foundation",
-      "Shunt Signal Foundation",
-      "Masonry Works",
-      "RCC Chamber",
-      "Coil Pit with Cable Entry",
-    ],
+      "Foundation works",
+      "Structural works",
+      "Full location box foundation",
+      "Half location box foundation",
+      "Signal foundation",
+      "Shunt signal foundation",
+      "Masonry works"
+    ]
   },
-
-  chamber: {
+  "chambers": {
+    id: 3,
     title: "RCC & Chamber Works",
+    desc: "Durable reinforced concrete chambers and coil pits.",
     images: [
-      "/work-images/rcc/chamber1.jpg",
-      "/work-images/rcc/chamber2.jpg",
-      "/work-images/rcc/chamber3.jpg",
+      `${BASE}assets/images/projects/rcc/rcc1.jpg`,
+      `${BASE}assets/images/projects/rcc/rcc2.jpg`,
+      `${BASE}assets/images/projects/rcc/rcc3.jpg`
     ],
     items: [
-      "RCC Chamber",
-      "Coil Pit with Cable Entry",
-    ],
+      "RCC chamber",
+      "Coil pit with cable entry"
+    ]
   },
-
-  st: {
+  "cabling": {
+    id: 4,
     title: "S&T Works – Cabling & Ducting",
+    desc: "Laying optical fiber and signaling cables with protection.",
     images: [
-      "/work-images/st/st1.jpg",
-      "/work-images/st/st2.jpg",
-      "/work-images/st/st3.jpg",
+      `${BASE}assets/images/projects/ofc.jpg`,
+      `${BASE}assets/images/projects/st/st1.jpg`,
+      `${BASE}assets/images/projects/st/st2.jpg`
     ],
     items: [
-      "Cable Laying",
-      "OFC / HDPE Duct Laying",
-      "Cable Laying through H-Boring",
-      "Cable Laying through Pipes",
-      "GI Pipe Laying / Fixing",
-    ],
+      "Cable laying",
+      "OFC / HDPE duct laying",
+      "Cable laying through H-boring",
+      "Cable laying through pipes",
+      "GI pipe laying / fixing"
+    ]
   },
-
-  stEquipment: {
-    title: "S&T Works – Equipment Installation & Termination",
+  "equipment": {
+    id: 5,
+    title: "S&T Works – Equipment Installation",
+    desc: "Installation and termination of signaling equipment.",
     images: [
-      "/work-images/st/equipment1.jpg",
-      "/work-images/st/equipment2.jpg",
-      "/work-images/st/equipment3.jpg",
+      `${BASE}assets/images/projects/signal.jpg`,
+      `${BASE}assets/images/projects/st/st1.jpg`,
+      `${BASE}assets/images/projects/st/st2.jpg`
     ],
     items: [
-      "Earth Electrode / GI Earth Pipe Installation",
-      "Cable Route Marker Erection / Fixing",
-      "Location Box Wiring",
-      "Signal Box Wiring",
-      "Post Erection / Fitting",
-    ],
+      "Earth electrode / GI earth pipe installation",
+      "Cable route marker erection / fixing",
+      "Location box wiring",
+      "Signal box wiring",
+      "Post erection / fitting",
+      "Splicing works",
+      "Quad jointing"
+    ]
   },
-
-  electrical: {
+  "electrical": {
+    id: 6,
     title: "Electrical & Earthing Works",
+    desc: "Comprehensive earthing and electrical safety solutions.",
     images: [
-      "/work-images/electrical/electrical1.jpg",
-      "/work-images/electrical/electrical2.jpg",
-      "/work-images/electrical/electrical3.jpg",
+      `${BASE}assets/images/projects/earthing.jpg`,
+      `${BASE}assets/images/projects/electrical/electrical1.jpg`,
+      `${BASE}assets/images/projects/electrical/electrical2.jpg`
     ],
     items: [
-      "Electrical Earthing",
-      "GI Earth Pipe Installation",
-      "Earthing Connections",
-    ],
+      "Electrical earthing",
+      "GI earth pipe installation",
+      "Earthing connections"
+    ]
   },
+  "labor": {
+    id: 7,
+    title: "Labor, Machinery & Site Support",
+    desc: "Skilled workforce and machinery for railway projects.",
+    images: [
+      `${BASE}assets/images/projects/hero.jpg`, // Placeholder
+      `${BASE}assets/images/projects/civil/civil1.jpg` // Placeholder
+    ],
+    items: [
+      "Skilled & unskilled labour",
+      "Daily wages labour",
+      "Night watchman",
+      "Machinery support"
+    ]
+  },
+  "misc": {
+    id: 8,
+    title: "Miscellaneous Site Works",
+    desc: "Site preparation, clearing, and material handling.",
+    images: [
+      `${BASE}assets/images/projects/civil/civil2.jpg`, // Placeholder
+      `${BASE}assets/images/projects/rcc/rcc1.jpg` // Placeholder
+    ],
+    items: [
+      "Jungle clearing / cutting",
+      "Material / lorry unloading",
+      "Railway S&T projects support",
+      "Telecom & OFC support works"
+    ]
+  }
 };
+
+export default workData;

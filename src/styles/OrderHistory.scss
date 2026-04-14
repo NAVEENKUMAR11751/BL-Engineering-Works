@@ -1,0 +1,130 @@
+@import './variables';
+
+.order-history-page {
+    padding-top: $spacing-8;
+    padding-bottom: $spacing-16;
+    min-height: 80vh;
+    background-color: $gray-50;
+
+    h1 {
+        font-family: $font-family-heading;
+        font-size: 2rem;
+        color: $primary-900;
+        margin-bottom: $spacing-8;
+        text-align: center;
+    }
+
+    .order-list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-6;
+        max-width: 800px;
+        margin: 0 auto;
+
+        .order-card {
+            background: $white;
+            border-radius: $radius-lg;
+            padding: $spacing-6;
+            box-shadow: $shadow-sm;
+            border: 1px solid $gray-200;
+            transition: $transition-base;
+
+            &:hover {
+                box-shadow: $shadow-md;
+                border-color: rgba($accent-blue, 0.3);
+            }
+
+            .order-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid $gray-100;
+                padding-bottom: $spacing-4;
+                margin-bottom: $spacing-4;
+
+                .order-id {
+                    font-weight: 700;
+                    color: $primary-900;
+                    font-size: 1.1rem;
+                }
+
+                .order-date {
+                    color: $gray-500;
+                    font-size: 0.9rem;
+                }
+            }
+
+            .order-body {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .order-summary {
+                    p {
+                        margin-bottom: $spacing-1;
+                        color: $gray-600;
+
+                        strong {
+                            color: $primary-900;
+                        }
+                    }
+                }
+
+                .order-status {
+                    padding: $spacing-2 $spacing-4;
+                    border-radius: $radius-full;
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    text-transform: capitalize;
+
+                    &.pending {
+                        background: rgba($warning, 0.1);
+                        color: $warning;
+                    }
+
+                    &.shipped {
+                        background: rgba($info, 0.1);
+                        color: $info;
+                    }
+
+                    &.delivered {
+                        background: rgba($success, 0.1);
+                        color: $success;
+                    }
+
+                    &.cancelled {
+                        background: rgba($error, 0.1);
+                        color: $error;
+                    }
+                }
+            }
+
+            .order-total {
+                margin-top: $spacing-4;
+                padding-top: $spacing-4;
+                border-top: 1px dashed $gray-200;
+                text-align: right;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: $accent-blue;
+            }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: $spacing-12;
+            color: $gray-500;
+
+            button {
+                margin-top: $spacing-4;
+                background: $accent-blue;
+                color: $white;
+                border: none;
+                padding: $spacing-2 $spacing-6;
+                border-radius: $radius-full;
+                cursor: pointer;
+                font-weight: 600;
+            }
+        }
+    }
+}

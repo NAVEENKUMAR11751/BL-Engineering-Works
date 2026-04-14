@@ -1,0 +1,131 @@
+@import './variables';
+
+.header-container {
+
+    // Top Info Bar
+    .top-bar {
+        transition: background-color 0.3s ease;
+
+        &.light {
+            background-color: $primary-900; // Using variable
+            color: $white;
+        }
+
+        &.dark {
+            background-color: darken($primary-900, 5%);
+            color: $gray-300;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+
+        .info-group,
+        .action-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+    }
+
+    // Main Navbar
+    .main-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1100;
+        backdrop-filter: blur(12px);
+        transition: all 0.3s ease;
+
+        &.light {
+            background-color: rgba($white, 0.9);
+            border-bottom: 1px solid rgba($black, 0.05);
+            color: $primary-900;
+        }
+
+        &.dark {
+            background-color: rgba($primary-900, 0.9);
+            border-bottom: 1px solid rgba($white, 0.1);
+            color: $white;
+        }
+
+        .navbar-toolbar {
+            justify-content: space-between;
+            padding-top: $spacing-2;
+            padding-bottom: $spacing-2;
+        }
+
+        // Brand
+        .brand-logo {
+            a {
+                text-decoration: none;
+                font-family: $font-family-heading;
+                font-weight: 800;
+                letter-spacing: 0.5px;
+                font-size: 1.5rem;
+                transition: color 0.3s ease;
+
+                &.light {
+                    color: $primary-900;
+                }
+
+                &.dark {
+                    color: $white;
+                }
+            }
+        }
+
+        // Desktop Menu
+        .desktop-menu {
+            display: none;
+
+            @media (min-width: 900px) {
+                display: flex;
+                gap: $spacing-2;
+            }
+
+            .nav-button {
+                font-weight: 500;
+                text-transform: capitalize;
+                font-size: 1rem;
+                border-radius: $radius-md;
+                padding: $spacing-1 $spacing-3;
+                transition: $transition-base;
+                color: inherit;
+
+                &:hover {
+                    background-color: rgba($accent-blue, 0.1);
+                    color: $accent-blue;
+                }
+
+                &.active {
+                    font-weight: 700;
+                    color: $accent-blue;
+                    background-color: rgba($accent-blue, 0.05);
+                }
+            }
+        }
+
+        // Mobile Menu Toggle
+        .mobile-menu-toggle {
+            display: block;
+            color: inherit;
+
+            @media (min-width: 900px) {
+                display: none;
+            }
+        }
+    }
+}
+
+// Mobile Drawer
+.mobile-drawer-content {
+    width: 280px;
+    background-color: $white;
+    height: 100%;
+    padding: $spacing-4;
+}

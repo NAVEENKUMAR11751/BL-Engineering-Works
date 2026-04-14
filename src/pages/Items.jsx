@@ -1,62 +1,37 @@
-import {
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
-  Button,
-  Box,
-  TextField,
-} from "@mui/material";
+import { Container } from "@mui/material";
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import AddIcon from "@mui/icons-material/Add";
+import SearchIcon from "@mui/icons-material/Search";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveIcon from "@mui/icons-material/Remove";
-import Pagination from "@mui/material/Pagination";
+import AddIcon from "@mui/icons-material/Add";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { CartContext } from "../client/CartContext";
 import { AuthContext } from "../auth/AuthContext";
 import itemsData from "../data/itemsData";
+import "../styles/Items.scss";
+
+const CATEGORIES = ["All", "Cable", "Earthing", "Duct", "Signal", "Power", "Accessories"];
 
 function Items() {
   const { addToCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const ITEMS_PER_PAGE = 12;
-
-  const [page, setPage] = useState(1);
   const [quantities, setQuantities] = useState({});
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
 
-  /* ✅ FILTER FIRST */
+  /* FILTER LOGIC */
   const filteredItems = itemsData.filter((item) => {
-    const matchSearch = item.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
-
-    const matchCategory =
-      category === "All" || item.category === category;
-
+    const matchSearch = item.name.toLowerCase().includes(search.toLowerCase());
+    const matchCategory = category === "All" || item.category === category;
     return matchSearch && matchCategory;
   });
 
-  /* ✅ RESET PAGE ON FILTER CHANGE */
-  useEffect(() => {
-    setPage(1);
-  }, [search, category]);
-
-  /* ✅ PAGINATION LOGIC */
-  const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
-
-  const paginatedItems = filteredItems.slice(
-    (page - 1) * ITEMS_PER_PAGE,
-    page * ITEMS_PER_PAGE
-  );
-
+  /* QUANTITY HANDLERS */
   const increaseQty = (id) =>
     setQuantities((p) => ({ ...p, [id]: (p[id] || 1) + 1 }));
 
@@ -71,121 +46,102 @@ function Items() {
       navigate("/login", { state: { from: "/items" } });
       return;
     }
-
     addToCart({
       ...item,
       quantity: quantities[item.id] || 1,
     });
+    // Optional: Add toast notification here later
   };
 
   return (
-    <Container sx={{ py: 6 }}>
-      <Typography variant="h4" fontWeight="bold" gutterBottom>
-        Railway Materials Store
-      </Typography>
+    <div className="items-page">
+      <Container>
+        <div className="store-header">
+          <h1>Railway Materials Store</h1>
+          <p>Official supply chain for approved railway contractors</p>
+        </div>
 
-      <TextField
-        fullWidth
-        placeholder="Search railway items..."
-        sx={{ mb: 3 }}
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+        <div className="store-layout">
+          {/* SIDEBAR */}
+          <aside className="store-sidebar">
+            <div className="search-box">
+              <div style={{ position: 'relative' }}>
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <SearchIcon style={{ position: 'absolute', right: 10, top: 10, color: '#94a3b8' }} />
+              </div>
+            </div>
 
-      {/* CATEGORY FILTER */}
-      <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", mb: 4 }}>
-        {["All", "Cable", "Earthing", "Duct", "Signal", "Power", "Accessories"].map(
-          (cat) => (
-            <Button
-              key={cat}
-              variant={category === cat ? "contained" : "outlined"}
-              onClick={() => setCategory(cat)}
-            >
-              {cat}
-            </Button>
-          )
-        )}
-      </Box>
-
-      <Grid container spacing={4}>
-        {paginatedItems.map((item) => (
-          <Grid item xs={12} sm={6} md={3} key={item.id}>
-            <Card sx={cardStyle}>
-              <CardMedia
-  component="img"
-  height="160"
-  image={`${import.meta.env.BASE_URL}${item.image}`}
-  onError={(e) => {
-    e.target.onerror = null;
-    e.target.src = `${import.meta.env.BASE_URL}item-images/no-image.png`;
-  }}
-/>
-
-
-              <CardContent>
-                <Typography fontWeight={600} noWrap>
-                  {item.name}
-                </Typography>
-                <Typography variant="h6" color="success.main">
-                  ₹ {item.price.toLocaleString()}
-                </Typography>
-              </CardContent>
-
-              <CardActions sx={{ flexDirection: "column", gap: 1 }}>
-                <Box sx={qtyBox}>
-                  <Button onClick={() => decreaseQty(item.id)}>
-                    <RemoveIcon fontSize="small" />
-                  </Button>
-                  <Typography>
-                    {quantities[item.id] || 1}
-                  </Typography>
-                  <Button onClick={() => increaseQty(item.id)}>
-                    <AddIcon fontSize="small" />
-                  </Button>
-                </Box>
-
-                <Button
-                  fullWidth
-                  variant="contained"
-                  onClick={() => handleAddToCart(item)}
+            <h3><FilterListIcon fontSize="small" /> Categories</h3>
+            <div className="filter-group">
+              {CATEGORIES.map(cat => (
+                <button
+                  key={cat}
+                  className={category === cat ? "active" : ""}
+                  onClick={() => setCategory(cat)}
                 >
-                  Add to Cart
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </aside>
 
-      {totalPages > 1 && (
-        <Box display="flex" justifyContent="center" mt={5}>
-          <Pagination
-            count={totalPages}
-            page={page}
-            onChange={(e, value) => setPage(value)}
-            color="primary"
-            shape="rounded"
-          />
-        </Box>
-      )}
-    </Container>
+          {/* MAIN GRID */}
+          <main className="store-grid">
+            <AnimatePresence>
+              {filteredItems.map((item) => (
+                <motion.div
+                  className="product-card"
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <div className="card-image">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = `${import.meta.env.BASE_URL}assets/images/products/no-image.png`;
+                      }}
+                    />
+                  </div>
+                  <div className="card-details">
+                    <h4>{item.name}</h4>
+                    <div className="price">₹ {item.price.toLocaleString()}</div>
+
+                    <div className="actions">
+                      <div className="qty-control">
+                        <button onClick={() => decreaseQty(item.id)}><RemoveIcon fontSize="small" /></button>
+                        <span>{quantities[item.id] || 1}</span>
+                        <button onClick={() => increaseQty(item.id)}><AddIcon fontSize="small" /></button>
+                      </div>
+                      <button className="add-btn" onClick={() => handleAddToCart(item)}>
+                        Add <AddShoppingCartIcon fontSize="small" style={{ marginLeft: 4, verticalAlign: 'text-bottom' }} />
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+
+            {filteredItems.length === 0 && (
+              <div style={{ textAlign: "center", padding: "2rem", color: "#64748b", gridColumn: "1 / -1" }}>
+                <h3>No items found</h3>
+                <p>Try adjusting your search or filter.</p>
+              </div>
+            )}
+          </main>
+        </div>
+      </Container>
+    </div>
   );
 }
-
-const cardStyle = {
-  height: "100%",
-  display: "flex",
-  flexDirection: "column",
-  borderRadius: "14px",
-  transition: "0.3s",
-  "&:hover": { transform: "translateY(-6px)" },
-};
-
-const qtyBox = {
-  display: "flex",
-  justifyContent: "space-between",
-  border: "1px solid #ddd",
-  borderRadius: "8px",
-};
 
 export default Items;

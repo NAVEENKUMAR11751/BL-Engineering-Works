@@ -1,0 +1,167 @@
+@import './variables';
+
+.checkout-page {
+    padding-top: $spacing-8;
+    padding-bottom: $spacing-16;
+    background-color: $gray-50;
+    min-height: 100vh;
+
+    h1 {
+        font-family: $font-family-heading;
+        font-size: 2.5rem;
+        color: $primary-900;
+        margin-bottom: $spacing-8;
+        text-align: center;
+    }
+
+    .checkout-container {
+        display: grid;
+        gap: $spacing-8;
+
+        @media (min-width: 900px) {
+            grid-template-columns: 2fr 1fr;
+            align-items: start;
+        }
+
+        // Left Column: Forms
+        .checkout-form-section {
+            background: $white;
+            padding: $spacing-8;
+            border-radius: $radius-lg;
+            box-shadow: $shadow-sm;
+            border: 1px solid $gray-200;
+
+            h2 {
+                font-size: 1.5rem;
+                color: $primary-900;
+                margin-bottom: $spacing-6;
+                padding-bottom: $spacing-4;
+                border-bottom: 1px solid $gray-100;
+            }
+
+            .form-group {
+                margin-bottom: $spacing-4;
+
+                label {
+                    display: block;
+                    font-weight: 500;
+                    color: $gray-600;
+                    margin-bottom: $spacing-2;
+                }
+
+                input,
+                textarea,
+                select {
+                    width: 100%;
+                    padding: $spacing-3;
+                    border-radius: $radius-md;
+                    border: 1px solid $gray-300;
+                    font-family: inherit;
+                    font-size: 1rem;
+                    transition: border-color 0.2s;
+
+                    &:focus {
+                        outline: none;
+                        border-color: $accent-blue;
+                        box-shadow: 0 0 0 3px rgba($accent-blue, 0.1);
+                    }
+                }
+            }
+        }
+
+        // Right Column: Order Summary
+        .order-summary-card {
+            background: $white;
+            padding: $spacing-6;
+            border-radius: $radius-lg;
+            box-shadow: $shadow-md;
+            border: 1px solid $gray-200;
+            position: sticky;
+            top: 100px;
+
+            h3 {
+                font-size: 1.25rem;
+                color: $primary-900;
+                margin-bottom: $spacing-4;
+                border-bottom: 1px solid $gray-200;
+                padding-bottom: $spacing-4;
+            }
+
+            .summary-items {
+                max-height: 300px;
+                overflow-y: auto;
+                margin-bottom: $spacing-4;
+
+                .summary-item {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: $spacing-3;
+                    font-size: 0.95rem;
+
+                    .item-name {
+                        color: $gray-600;
+                        flex: 1;
+                        padding-right: $spacing-2;
+
+                        span {
+                            font-weight: 600;
+                            color: $primary-900;
+                        }
+                    }
+
+                    .item-price {
+                        font-weight: 600;
+                        color: $primary-900;
+                    }
+                }
+            }
+
+            .summary-total {
+                border-top: 1px solid $gray-200;
+                padding-top: $spacing-4;
+                margin-top: $spacing-4;
+
+                .row {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: $spacing-2;
+                    color: $gray-600;
+
+                    &.final {
+                        color: $primary-900;
+                        font-weight: 800;
+                        font-size: 1.2rem;
+                        margin-top: $spacing-4;
+                    }
+                }
+            }
+
+            .place-order-btn {
+                width: 100%;
+                background: $accent-blue;
+                color: $white;
+                border: none;
+                padding: $spacing-3;
+                border-radius: $radius-full;
+                font-size: 1.1rem;
+                font-weight: 700;
+                cursor: pointer;
+                margin-top: $spacing-6;
+                transition: $transition-base;
+                box-shadow: $shadow-md;
+
+                &:hover {
+                    background: darken($accent-blue, 8%);
+                    transform: translateY(-2px);
+                    box-shadow: $shadow-lg;
+                }
+
+                &:disabled {
+                    background: $gray-400;
+                    cursor: not-allowed;
+                    transform: none;
+                }
+            }
+        }
+    }
+}

@@ -19,7 +19,9 @@ import {
 import { motion } from "framer-motion";
 
 import MenuIcon from "@mui/icons-material/Menu";
+import DashboardIcon from "@mui/icons-material/Dashboard"; // Added
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag"; // Added
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -33,6 +35,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { CartContext } from "../client/CartContext";
 import { AuthContext } from "../auth/AuthContext";
+import "../styles/Header.scss";
 
 function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -64,7 +67,7 @@ function Header() {
 
   /* ================= MOBILE DRAWER ================= */
   const drawerMenu = (
-    <Box sx={{ width: 260 }} onClick={() => setDrawerOpen(false)}>
+    <Box className="mobile-drawer-content" onClick={() => setDrawerOpen(false)}>
       <List>
         {[
           { text: "Home", path: "/" },
@@ -79,34 +82,35 @@ function Header() {
             component={Link}
             to={item.path}
             selected={isActive(item.path)}
+            onClick={() => setDrawerOpen(false)}
           >
             <ListItemText primary={item.text} />
           </ListItem>
         ))}
+
+        {user?.role === "admin" && (
+          <ListItem button component={Link} to="/admin/dashboard" onClick={() => setDrawerOpen(false)}>
+            <ListItemText primary="Dashboard" sx={{ color: "#001e3c", fontWeight: "bold" }} />
+          </ListItem>
+        )}
+
+        {user?.role === "client" && (
+          <ListItem button component={Link} to="/orders" onClick={() => setDrawerOpen(false)}>
+            <ListItemText primary="My Orders" sx={{ color: "#001e3c", fontWeight: "bold" }} />
+          </ListItem>
+        )}
       </List>
     </Box>
   );
 
   return (
-    <>
+    <div className="header-container">
       {/* ================= TOP INFO BAR ================= */}
-      <Box
-        sx={{
-          backgroundColor: darkMode ? "#020617" : "#0f172a",
-          color: "white",
-        }}
-      >
+      <Box className={`top-bar ${darkMode ? "dark" : "light"}`}>
         <Container>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              py: 0.8,
-            }}
-          >
+          <Box className="top-bar-content">
             {/* EMAIL */}
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <Box className="info-group">
               <EmailIcon fontSize="small" />
               <Typography variant="body2">
                 blengineering@gmail.com
@@ -114,7 +118,7 @@ function Header() {
             </Box>
 
             {/* ACTIONS */}
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <Box className="action-group">
               <IconButton color="inherit" size="small">
                 <LinkedInIcon fontSize="small" />
               </IconButton>
@@ -125,7 +129,7 @@ function Header() {
                 <YouTubeIcon fontSize="small" />
               </IconButton>
 
-              <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
+              <Divider orientation="vertical" flexItem sx={{ mx: 1, borderColor: "rgba(255,255,255,0.3)" }} />
 
               {/* DARK / LIGHT TOGGLE */}
               <IconButton
@@ -163,32 +167,43 @@ function Header() {
                 </Button>
               ) : (
                 <>
-                <Button
-                  color="inherit"
-                  size="small"
-                  startIcon={
-                    <Avatar sx={{ width: 24, height: 24 }}>
-                      {user.role?.[0].toUpperCase()}
-                    </Avatar>
-                  }
-                  onClick={(e) => setProfileAnchor(e.currentTarget)}
-                >
-                  {user.role === "admin" ? "Admin" : "Client"}
-                </Button>
-
+                  <Button
+                    color="inherit"
+                    size="small"
+                    startIcon={
+                      <Avatar sx={{ width: 24, height: 24 }}>
+                        {user.role?.[0].toUpperCase()}
+                      </Avatar>
+                    }
+                    onClick={(e) => setProfileAnchor(e.currentTarget)}
+                  >
+                    {user.role === "admin" ? "Admin" : "Client"}
+                  </Button>
 
                   <Menu
                     anchorEl={profileAnchor}
                     open={Boolean(profileAnchor)}
                     onClose={() => setProfileAnchor(null)}
                   >
-                    <MenuItem component={Link} to="/profile">
+                    <MenuItem component={Link} to="/profile" onClick={() => setProfileAnchor(null)}>
                       <PersonIcon fontSize="small" sx={{ mr: 1, color: "#203a43" }} />
                       Profile
                     </MenuItem>
-                    <MenuItem component={Link} to="/orders">
-                      My Orders
-                    </MenuItem>
+
+                    {user.role === "admin" && (
+                      <MenuItem component={Link} to="/admin/dashboard" onClick={() => setProfileAnchor(null)}>
+                        <DashboardIcon fontSize="small" sx={{ mr: 1, color: "#203a43" }} />
+                        Dashboard
+                      </MenuItem>
+                    )}
+
+                    {user.role === "client" && (
+                      <MenuItem component={Link} to="/orders" onClick={() => setProfileAnchor(null)}>
+                        <ShoppingBagIcon fontSize="small" sx={{ mr: 1, color: "#203a43" }} />
+                        My Orders
+                      </MenuItem>
+                    )}
+
                     <Divider />
                     <MenuItem
                       onClick={() => {
@@ -196,7 +211,7 @@ function Header() {
                         setProfileAnchor(null);
                       }}
                     >
-                      <LogoutIcon fontSize="small" sx={{ mr: 1 }} />
+                      <LogoutIcon fontSize="small" sx={{ mr: 1, color: "#d32f2f" }} />
                       Logout
                     </MenuItem>
                   </Menu>
@@ -209,46 +224,31 @@ function Header() {
 
       {/* ================= MAIN GLASS HEADER ================= */}
       <AppBar
+        className={`main-navbar ${darkMode ? "dark" : "light"}`}
         position="sticky"
         elevation={0}
-        sx={{
-          backgroundColor: darkMode
-            ? "rgba(2,6,23,0.8)"
-            : "rgba(255,255,255,0.8)",
-          backdropFilter: "blur(12px)",
-          borderBottom: darkMode
-            ? "1px solid rgba(255,255,255,0.1)"
-            : "1px solid rgba(0,0,0,0.08)",
-        }}
       >
         <Container>
-          <Toolbar sx={{ justifyContent: "space-between",py: 1 }}>
+          <Toolbar className="navbar-toolbar">
             {/* BRAND */}
             <Typography
-  component={motion.div}
-  initial={{ opacity: 0, y: -10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  variant="h5"
-  fontWeight={700}
-  sx={{
-    letterSpacing: "1px",
-    textDecoration: "none",
-  }}
->
-  <Link
-    to="/"
-    style={{
-      textDecoration: "none",
-      color: darkMode ? "#e5e7eb" : "#0f172a",
-    }}
-  >
-    BL Engineering Works
-  </Link>
-</Typography>
+              component={motion.div}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              variant="h5"
+              className="brand-logo"
+            >
+              <Link
+                to="/"
+                className={darkMode ? "dark" : "light"}
+              >
+                BL Engineering Works
+              </Link>
+            </Typography>
 
             {/* DESKTOP MENU */}
-            <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1}}>
+            <Box className="desktop-menu">
               {[
                 { text: "Home", path: "/" },
                 { text: "Works", path: "/works" },
@@ -260,13 +260,7 @@ function Header() {
                   key={item.text}
                   component={Link}
                   to={item.path}
-                  sx={{
-                    fontWeight: isActive(item.path) ? "bold" : "normal",
-                    borderBottom: isActive(item.path)
-                      ? "2px solid #1976d2"
-                      : "2px solid transparent",
-                    borderRadius: 0,
-                  }}
+                  className={`nav-button ${isActive(item.path) ? "active" : ""}`}
                 >
                   {item.text}
                 </Button>
@@ -275,7 +269,7 @@ function Header() {
 
             {/* MOBILE MENU */}
             <IconButton
-              sx={{ display: { xs: "block", md: "none" } }}
+              className="mobile-menu-toggle"
               onClick={() => setDrawerOpen(true)}
             >
               <MenuIcon />
@@ -292,7 +286,7 @@ function Header() {
       >
         {drawerMenu}
       </Drawer>
-    </>
+    </div>
   );
 }
 

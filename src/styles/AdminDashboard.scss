@@ -1,0 +1,235 @@
+@import './variables';
+
+.admin-dashboard {
+    display: flex;
+    min-height: 100vh;
+    background-color: $gray-50;
+
+    // Sidebar (Desktop)
+    .admin-sidebar {
+        width: 260px;
+        background-color: $primary-900;
+        color: $white;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        padding: $spacing-6;
+        z-index: 100;
+        transition: $transition-base;
+
+        @media (max-width: 900px) {
+            transform: translateX(-100%);
+
+            &.open {
+                transform: translateX(0);
+            }
+        }
+
+        .brand {
+            font-family: $font-family-heading;
+            font-size: 1.5rem;
+            margin-bottom: $spacing-8;
+            color: $accent-blue;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing-2;
+
+            button {
+                background: transparent;
+                border: none;
+                color: $gray-300;
+                padding: $spacing-3;
+                text-align: left;
+                border-radius: $radius-md;
+                cursor: pointer;
+                transition: $transition-base;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: $spacing-3;
+
+                &:hover,
+                &.active {
+                    background: rgba($accent-blue, 0.2);
+                    color: $white;
+                }
+            }
+        }
+
+        .logout-btn {
+            margin-top: auto;
+            color: $error;
+
+            &:hover {
+                background: rgba($error, 0.1);
+                color: $error;
+            }
+        }
+    }
+
+    // Main Content
+    .admin-content {
+        flex: 1;
+        margin-left: 260px; // Match sidebar width
+        padding: $spacing-8;
+        width: 100%;
+
+        @media (max-width: 900px) {
+            margin-left: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: $spacing-8;
+
+            h1 {
+                color: $primary-900;
+                font-size: 2rem;
+            }
+
+            .user-profile {
+                display: flex;
+                align-items: center;
+                gap: $spacing-4;
+
+                span {
+                    font-weight: 600;
+                    color: $gray-600;
+                }
+            }
+        }
+
+        // Stats Grid
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: $spacing-6;
+            margin-bottom: $spacing-8;
+
+            .stat-card {
+                background: $white;
+                padding: $spacing-6;
+                border-radius: $radius-lg;
+                box-shadow: $shadow-sm;
+                border: 1px solid $gray-200;
+                display: flex;
+                align-items: center;
+                gap: $spacing-4;
+
+                .icon {
+                    padding: $spacing-4;
+                    border-radius: $radius-full;
+                    background: $gray-100;
+                    color: $primary-600;
+
+                    &.blue {
+                        background: rgba($accent-blue, 0.1);
+                        color: $accent-blue;
+                    }
+
+                    &.green {
+                        background: rgba($success, 0.1);
+                        color: $success;
+                    }
+
+                    &.orange {
+                        background: rgba($warning, 0.1);
+                        color: $warning;
+                    }
+                }
+
+                .info {
+                    h3 {
+                        font-size: 0.9rem;
+                        color: $gray-500;
+                        margin-bottom: $spacing-1;
+                    }
+
+                    p {
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: $primary-900;
+                    }
+                }
+            }
+        }
+
+        // Recent Orders Table
+        .recent-orders {
+            background: $white;
+            border-radius: $radius-lg;
+            box-shadow: $shadow-sm;
+            border: 1px solid $gray-200;
+            overflow: hidden;
+
+            .table-header {
+                padding: $spacing-6;
+                border-bottom: 1px solid $gray-200;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h2 {
+                    font-size: 1.25rem;
+                    color: $primary-900;
+                }
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+
+                th,
+                td {
+                    padding: $spacing-4 $spacing-6;
+                    text-align: left;
+                    border-bottom: 1px solid $gray-100;
+                }
+
+                th {
+                    background: $gray-50;
+                    color: $gray-500;
+                    font-weight: 600;
+                    font-size: 0.85rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+
+                td {
+                    color: $gray-700;
+                    font-size: 0.95rem;
+
+                    .status-badge {
+                        padding: 4px 12px;
+                        border-radius: $radius-full;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+
+                        &.pending {
+                            background: rgba($warning, 0.1);
+                            color: $warning;
+                        }
+
+                        &.shipped {
+                            background: rgba($info, 0.1);
+                            color: $info;
+                        }
+
+                        &.delivered {
+                            background: rgba($success, 0.1);
+                            color: $success;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,390 +1,226 @@
-import {
-  Box,
-  Typography,
-  Button,
-  Container,
-  Stack,
-  Grid,
-  Card,
-  CardContent,
-} from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Container, Grid, Button, Box } from "@mui/material";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import AnimateOnScroll from "../components/AnimateOnScroll";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import SpeedIcon from "@mui/icons-material/Speed";
+import EngineeringIcon from "@mui/icons-material/Engineering";
+
+import workData from "../data/worksData";
+import "../styles/Home.scss";
+
+// Get top 3 works for preview
+const recentWorks = Object.values(workData).slice(0, 3);
+
+const clients = [
+  { name: "Indian Railways", img: `${import.meta.env.BASE_URL}assets/images/clients/indian-railways.png` },
+  { name: "L&T", img: `${import.meta.env.BASE_URL}assets/images/clients/larsen-toubro.png` },
+  { name: "RVNL", img: `${import.meta.env.BASE_URL}assets/images/clients/rvnl.png` },
+  { name: "IRCON", img: `${import.meta.env.BASE_URL}assets/images/clients/ircon.png` },
+];
 
 function Home() {
-  const navigate = useNavigate();
-
   return (
-    <>
-      {/* ================= HERO SECTION ================= */}
-      <Box
-  sx={{
-    position: "relative",
-    height: { xs: "70vh", md: "80vh" },
-    backgroundImage: `url(${import.meta.env.BASE_URL}work-images/hero.jpg)`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  }}
->
-
-        <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(90deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 60%)",
-          }}
-        />
-
-        <Container
-          sx={{
-            position: "relative",
-            zIndex: 1,
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <Box maxWidth="650px">
-            <Typography
-              variant="h2"
-              sx={{
-                color: "white",
-                fontWeight: 700,
-                mb: 2,
-                fontSize: { xs: "2.2rem", md: "3.5rem" },
-              }}
-            >
-              BL Engineering Works
-            </Typography>
-
-            <Typography sx={{ color: "#e0e0e0", mb: 4 }}>
-              Trusted partner for Railway Civil, S&T and Electrical infrastructure
-              works delivering quality, safety and reliability.
-            </Typography>
-
-            <Stack direction="row" spacing={2}>
-              <Button component={Link} to="/contact" variant="contained">
-                Contact Us
-              </Button>
-              <Button
-                component={Link}
-                to="/works"
-                variant="outlined"
-                sx={{ color: "white", borderColor: "white" }}
-              >
-                Our Works
-              </Button>
-            </Stack>
-          </Box>
-        </Container>
-      </Box>
-
-      {/* ================= OUR SERVICES ================= */}
-      <AnimateOnScroll>
-        <Box sx={{ py: 8, backgroundColor: "#f7f9fc" }}>
-          <Container>
-            <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
-              Our Services
-            </Typography>
-
-            <Typography
-              align="center"
-              color="text.secondary"
-              sx={{ mb: 6, maxWidth: 650, mx: "auto" }}
-            >
-              End-to-end railway infrastructure solutions executed with precision.
-            </Typography>
-
-            {/* ================= IMAGE AUTO SCROLL (ADDED) ================= */}
-            <Box
-              sx={{
-                overflow: "hidden",
-                mb: 6,
-                borderTop: "1px solid #e5e7eb",
-                borderBottom: "1px solid #e5e7eb",
-                backgroundColor: "#f8fafc",
-              }}
-            >
+    <div className="home-page">
+      {/* ================= HERO SECTION 2.0 ================= */}
+      <section className="hero-section">
+        <div className="hero-overlay" />
+        <Container maxWidth="lg" className="hero-container">
+          <Grid container alignItems="center" spacing={4}>
+            <Grid item xs={12} md={8}>
               <motion.div
-                animate={{ x: ["0%", "-100%"] }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 30,
-                  ease: "linear",
-                }}
-                style={{
-                  display: "flex",
-                  whiteSpace: "nowrap",
-                }}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
               >
-               {[
-  `${import.meta.env.BASE_URL}work-images/civil/civil1.jpg`,
-  `${import.meta.env.BASE_URL}work-images/rcc/rcc1.jpg`,
-  `${import.meta.env.BASE_URL}work-images/st/st1.jpg`,
-  `${import.meta.env.BASE_URL}work-images/electrical/electrical1.jpg`,
-  `${import.meta.env.BASE_URL}work-images/civil/civil2.jpg`,
-  `${import.meta.env.BASE_URL}work-images/rcc/rcc2.jpg`,
-  `${import.meta.env.BASE_URL}work-images/st/st2.jpg`,
-  `${import.meta.env.BASE_URL}work-images/electrical/electrical2.jpg`,
-].concat([
-  `${import.meta.env.BASE_URL}work-images/civil/civil1.jpg`,
-  `${import.meta.env.BASE_URL}work-images/rcc/rcc1.jpg`,
-  `${import.meta.env.BASE_URL}work-images/st/st1.jpg`,
-  `${import.meta.env.BASE_URL}work-images/electrical/electrical1.jpg`,
-  `${import.meta.env.BASE_URL}work-images/civil/civil2.jpg`,
-  `${import.meta.env.BASE_URL}work-images/rcc/rcc2.jpg`,
-  `${import.meta.env.BASE_URL}work-images/st/st2.jpg`,
-  `${import.meta.env.BASE_URL}work-images/electrical/electrical2.jpg`,
-])
-                  .map((img, index) => (
-                    <Box
-                      key={index}
-                      sx={{
-                        mx: 2,
-                        my: 2,
-                        minWidth: 240,
-                        height: 160,
-                        borderRadius: "14px",
-                        overflow: "hidden",
-                        boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
-                        backgroundColor: "#fff",
-                      }}
-                    >
-                      <Box
-                        component="img"
-                        src={img}
-                        alt="Service Work"
-                        sx={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                        }}
-                        onError={(e) => (e.target.style.display = "none")}
-                      />
-                    </Box>
-                  ))}
+                <div className="hero-badge">
+                  <VerifiedUserIcon fontSize="small" /> ISO 9001:2015 CERTIFIED
+                </div>
+                <h1>
+                  Engineering the <br />
+                  <span className="gradient-text">Future of Railways</span>
+                </h1>
+                <p className="hero-subtitle">
+                  Premier turn-key solutions for Civil, Signaling, Telecommunication, and Electrical infrastructure across Indian Railways.
+                </p>
+                <div className="hero-actions">
+                  <Link to="/works" className="btn-primary">
+                    Explore Portfolio
+                  </Link>
+                  <Link to="/contact" className="btn-outline">
+                    Get a Quote
+                  </Link>
+                </div>
               </motion.div>
-            </Box>
-
-            {/* ================= SERVICE CARDS (UNCHANGED) ================= */}
-            <Grid container spacing={4} justifyContent="center">
-             {[
-  {
-    title: "Civil Works",
-    img: `${import.meta.env.BASE_URL}work-images/civil/civil1.jpg`,
-    desc: "Trenching, foundations, RCC trenches & crossings",
-    path: "/services/civil",
-  },
-  {
-    title: "RCC & Structural",
-    img: `${import.meta.env.BASE_URL}work-images/rcc/rcc1.jpg`,
-    desc: "RCC chambers, coil pits & structural foundations",
-    path: "/services/rcc",
-  },
-  {
-    title: "S&T Works",
-    img: `${import.meta.env.BASE_URL}work-images/st/st1.jpg`,
-    desc: "OFC laying, cable routing & termination",
-    path: "/services/st",
-  },
-  {
-    title: "Electrical & Earthing",
-    img: `${import.meta.env.BASE_URL}work-images/electrical/electrical1.jpg`,
-    desc: "GI earthing, electrical installations",
-    path: "/services/electrical",
-  },
-              ].map((service) => (
-                <Grid item xs={12} sm={6} md={3} key={service.title}>
-                  <motion.div whileHover={{ scale: 1.04 }}>
-                    <Card
-                      sx={{
-                        ...imageCard,
-                        cursor: "pointer",
-                      }}
-                      onClick={() => navigate(service.path)}
-                    >
-                      <Box
-                        component="img"
-                        src={service.img}
-                        alt={service.title}
-                        sx={imageStyle}
-                        onError={(e) => (e.target.style.display = "none")}
-                      />
-                      <CardContent>
-                        <Typography fontWeight="bold">
-                          {service.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {service.desc}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              ))}
             </Grid>
-          </Container>
-        </Box>
-      </AnimateOnScroll>
+          </Grid>
+        </Container>
+      </section>
+
+      {/* ================= STATS BANNER ================= */}
+      <div className="stats-banner">
+        <Container>
+          <Grid container spacing={4} justifyContent="center">
+            {[
+              { label: "Years Experience", value: "15+" },
+              { label: "Projects Delivered", value: "500+" },
+              { label: "Route Km Covered", value: "2500+" },
+              { label: "Skilled Workforce", value: "200+" },
+            ].map((stat, index) => (
+              <Grid item xs={6} md={3} key={index}>
+                <motion.div
+                  className="stat-item"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <h3>{stat.value}</h3>
+                  <p>{stat.label}</p>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </div>
 
       {/* ================= WHY CHOOSE US ================= */}
-      <AnimateOnScroll>
-        <Box sx={{ py: 8 }}>
-          <Container>
-            <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
-              Why Choose Us
-            </Typography>
+      <section className="section bg-white why-us-section">
+        <Container>
+          <div className="section-header">
+            <span className="subtitle">Core Values</span>
+            <h2>Why Partner With Us?</h2>
+          </div>
 
-            <Typography
-              align="center"
-              color="text.secondary"
-              sx={{ mb: 6, maxWidth: 650, mx: "auto" }}
-            >
-              Strong focus on quality, safety and timely delivery.
-            </Typography>
+          <Grid container spacing={3}>
+            {[
+              {
+                icon: <VerifiedUserIcon sx={{ fontSize: 40 }} />,
+                title: "Safety First",
+                desc: "Zero-compromise approach to site safety and regulatory compliance.",
+                color: "#10b981"
+              },
+              {
+                icon: <EngineeringIcon sx={{ fontSize: 40 }} />,
+                title: "Technical Expertise",
+                desc: "Specialized teams for S&T, Civil, and Electrical engineering challenges.",
+                color: "#3b82f6"
+              },
+              {
+                icon: <SpeedIcon sx={{ fontSize: 40 }} />,
+                title: "Timely Execution",
+                desc: "Proven track record of delivering complex projects within deadlines.",
+                color: "#f59e0b"
+              },
+              {
+                icon: <VerifiedUserIcon sx={{ fontSize: 40 }} />, // Using verified icon as placeholder for quality
+                title: "Quality Assurance",
+                desc: "ISO Certified processes ensuring world-class output in every project.",
+                color: "#8b5cf6"
+              }
+            ].map((item, i) => (
+              <Grid item xs={12} sm={6} md={3} key={i}>
+                <motion.div
+                  className="feature-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="icon-box" style={{ color: item.color, background: `${item.color}15` }}>
+                    {item.icon}
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </section>
 
-            <Grid container spacing={4} justifyContent="center">
-              {[
-  {
-    title: "Experienced Team",
-    img: `${import.meta.env.BASE_URL}why/experience.jpg`,
-    desc: "Skilled manpower with railway project expertise",
-  },
-  {
-    title: "Quality Standards",
-    img: `${import.meta.env.BASE_URL}why/quality.jpg`,
-    desc: "Strict adherence to railway specifications",
-  },
-  {
-    title: "Timely Delivery",
-    img: `${import.meta.env.BASE_URL}why/time.jpg`,
-    desc: "Planned execution & on-time completion",
-  },
-  {
-    title: "Safety First",
-    img: `${import.meta.env.BASE_URL}why/safety.jpg`,
-    desc: "Safety-compliant execution at all sites",
-  },
+      {/* ================= RECENT WORKS (DYNAMIC) ================= */}
+      <section className="section bg-light works-preview-section">
+        <Container>
+          <div className="section-header">
+            <span className="subtitle">Our Expertise</span>
+            <h2>Recent Projects</h2>
+            <p>A glimpse into our diverse portfolio of railway infrastructure works.</p>
+          </div>
 
-              ].map((item) => (
-                <Grid item xs={6} sm={4} md={3} key={item.title}>
-                  <motion.div whileHover={{ y: -6 }}>
-                    <Card sx={imageCard}>
-                      <Box
-                        component="img"
-                        src={item.img}
-                        alt={item.title}
-                        sx={imageStyle}
-                        onError={(e) => (e.target.style.display = "none")}
-                      />
-                      <CardContent>
-                        <Typography fontWeight="bold">
-                          {item.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {item.desc}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </Box>
-      </AnimateOnScroll>
+          <Grid container spacing={3}>
+            {recentWorks.map((work, index) => (
+              <Grid item xs={12} sm={4} md={4} key={work.id}>
+                <motion.div
+                  className="project-card"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="card-image">
+                    <img src={work.images[0]} alt={work.title} />
+                    <div className="overlay">
+                      <Link to="/works" className="view-btn">View All</Link>
+                    </div>
+                  </div>
+                  <div className="card-content">
+                    <h3>{work.title}</h3>
+                    <p>{work.desc}</p>
+                    <Link to="/works" className="text-link">
+                      Read More <ArrowForwardIcon fontSize="small" />
+                    </Link>
+                  </div>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
 
-      {/* ================= CLIENTS & PARTNERS ================= */}
-      <AnimateOnScroll>
-        <Box sx={{ py: 8, backgroundColor: "#f8fafc" }}>
-          <Container>
-            <Typography
-              variant="h4"
-              align="center"
-              fontWeight="bold"
-              gutterBottom
-            >
-              Our Clients & Partners
-            </Typography>
+          <Box sx={{ textAlign: "center", mt: 6 }}>
+            <Link to="/works">
+              <Button variant="outlined" size="large" sx={{ border: "2px solid", fontWeight: "bold" }}>
+                View Full Portfolio
+              </Button>
+            </Link>
+          </Box>
+        </Container>
+      </section>
 
-            <Typography
-              align="center"
-              color="text.secondary"
-              sx={{ mb: 6, maxWidth: 600, mx: "auto" }}
-            >
-              We have worked with leading organizations in railway and
-              infrastructure development.
-            </Typography>
+      {/* ================= CLIENTS ================= */}
+      <section className="section bg-white">
+        <Container>
+          <div className="section-header">
+            <span className="subtitle">Trusted By</span>
+            <h2>Our Esteemed Clients</h2>
+          </div>
+          <div className="clients-grid">
+            {clients.map((client, index) => (
+              <div className="client-logo-wrapper" key={index}>
+                <img src={client.img} alt={client.name} />
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
 
-            <Grid container spacing={4} justifyContent="center">
-              {[
-  {
-    name: "Indian Railways",
-    logo: `${import.meta.env.BASE_URL}client-logos/indian-railways.png`,
-  },
-  {
-    name: "IRCON",
-    logo: `${import.meta.env.BASE_URL}client-logos/ircon.png`,
-  },
-  {
-    name: "RVNL",
-    logo: `${import.meta.env.BASE_URL}client-logos/rvnl.png`,
-  },
-  {
-    name: "L&T",
-    logo: `${import.meta.env.BASE_URL}client-logos/larsen-toubro.png`,
-  },
-
-              ].map((client) => (
-                <Grid item xs={6} sm={4} md={3} key={client.name}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      filter: "grayscale(100%)",
-                      transition: "0.3s",
-                      "&:hover": {
-                        filter: "grayscale(0%)",
-                        transform: "scale(1.08)",
-                      },
-                    }}
-                  >
-                    <Box
-                      component="img"
-                      src={client.logo}
-                      alt={client.name}
-                      sx={{ maxWidth: 160 }}
-                      onError={(e) => (e.target.style.display = "none")}
-                    />
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-        </Box>
-      </AnimateOnScroll>
-    </>
+      {/* ================= CTA ================= */}
+      <section className="cta-section">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2>Ready to Start Your Project?</h2>
+            <p>Contact us today for world-class railway engineering solutions.</p>
+            <Link to="/contact" className="btn-white">
+              Get in Touch
+            </Link>
+          </motion.div>
+        </Container>
+      </section>
+    </div>
   );
 }
-
-/* ================= STYLES ================= */
-
-const imageCard = {
-  height: "100%",
-  borderRadius: "14px",
-  overflow: "hidden",
-  transition: "0.3s",
-  "&:hover": {
-    boxShadow: "0 10px 28px rgba(0,0,0,0.15)",
-  },
-};
-
-const imageStyle = {
-  width: "100%",
-  height: 160,
-  objectFit: "cover",
-};
 
 export default Home;

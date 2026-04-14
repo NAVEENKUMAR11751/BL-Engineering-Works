@@ -33,12 +33,12 @@ function Cart() {
 
   // 🟡 PROCEED TO BUY (Amazon Logic)
   const handleProceed = () => {
-  if (user?.role === "client") {
-    navigate("/checkout");
-  } else {
-    navigate("/login", { state: { from: "/checkout" } });
-  }
-};
+    if (user?.role === "client") {
+      navigate("/checkout");
+    } else {
+      navigate("/login", { state: { from: "/checkout" } });
+    }
+  };
 
 
   // 🟢 EMPTY CART
@@ -70,7 +70,7 @@ function Cart() {
             image={item.image}
             sx={{ width: 140 }}
             onError={(e) =>
-              (e.target.src = "/item-images/no-image.png")
+              (e.target.src = `${import.meta.env.BASE_URL}assets/images/products/no-image.png`)
             }
           />
 

@@ -1,0 +1,109 @@
+@import './variables';
+
+.footer-container {
+    background-color: $primary-900; // Using variable
+    color: $gray-300;
+    padding-top: $spacing-16;
+    margin-top: auto;
+    border-top: 4px solid $accent-blue;
+
+    .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-8;
+        justify-content: space-between;
+
+        // Brand Section
+        .brand-section {
+            flex: 1;
+            min-width: 280px;
+
+            .brand-title {
+                font-family: $font-family-heading;
+                font-weight: 800;
+                font-size: 1.5rem;
+                color: $white;
+                margin-bottom: $spacing-4;
+            }
+
+            .brand-desc {
+                color: $gray-400;
+                line-height: 1.7;
+                margin-bottom: $spacing-6;
+            }
+        }
+
+        // Links Section
+        .links-section {
+            flex: 1;
+            min-width: 200px;
+
+            .links-title {
+                font-weight: 700;
+                margin-bottom: $spacing-6;
+                color: $white;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 0.9rem;
+            }
+
+            .footer-link {
+                display: block;
+                color: $gray-400;
+                text-decoration: none;
+                margin-bottom: $spacing-3;
+                transition: $transition-base;
+                position: relative;
+                padding-left: 0;
+
+                &:hover {
+                    color: $accent-blue;
+                    padding-left: $spacing-2;
+                }
+            }
+        }
+
+        // Contact Section
+        .contact-section {
+            flex: 1;
+            min-width: 280px;
+
+            .contact-title {
+                font-weight: 700;
+                margin-bottom: $spacing-6;
+                color: $white;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 0.9rem;
+            }
+
+            .contact-item {
+                display: flex;
+                gap: $spacing-3;
+                margin-bottom: $spacing-4;
+                color: $gray-400;
+                align-items: flex-start;
+
+                svg {
+                    color: $accent-blue;
+                    margin-top: 2px;
+                }
+            }
+        }
+    }
+
+    // Footer Bottom
+    .footer-bottom {
+        background-color: darken($primary-900, 3%);
+        padding: $spacing-6 0;
+        margin-top: $spacing-12;
+        text-align: center;
+        color: $gray-500;
+        font-size: 0.9rem;
+        border-top: 1px solid rgba($white, 0.05);
+
+        p {
+            margin: 0;
+        }
+    }
+}

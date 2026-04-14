@@ -2,11 +2,11 @@ import "./ImageScroller.css";
 
 function ImageScroller() {
   const images = [
-    "/work-images/trenching.jpg",
-    "/work-images/rcc.jpg",
-    "/work-images/ofc.jpg",
-    "/work-images/earthing.jpg",
-    "/work-images/signal.jpg"
+    `${import.meta.env.BASE_URL}assets/images/projects/trenching.jpg`,
+    `${import.meta.env.BASE_URL}assets/images/projects/rcc.jpg`,
+    `${import.meta.env.BASE_URL}assets/images/projects/ofc.jpg`,
+    `${import.meta.env.BASE_URL}assets/images/projects/earthing.jpg`,
+    `${import.meta.env.BASE_URL}assets/images/projects/signal.jpg`
   ];
 
   return (

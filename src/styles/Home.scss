@@ -1,0 +1,428 @@
+@import './variables';
+
+// ================= HERO SECTION 2.0 =================
+.hero-section {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  background-image: url('/BL-Engineering-Works/assets/images/projects/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: $white;
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba($black, 0.9) 0%, rgba($black, 0.7) 50%, rgba($black, 0.3) 100%);
+    z-index: 1;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    padding-top: $spacing-8;
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba($accent-blue, 0.2);
+      border: 1px solid rgba($accent-blue, 0.4);
+      color: $accent-blue;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin-bottom: $spacing-6;
+      backdrop-filter: blur(4px);
+    }
+
+    h1 {
+      font-family: $font-family-heading;
+      font-size: 3.5rem;
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: $spacing-6;
+      letter-spacing: -1px;
+
+      @media (min-width: 768px) {
+        font-size: 5rem;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, $white, $gray-400);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: $gray-300;
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: $spacing-8;
+      border-left: 3px solid $accent-blue;
+      padding-left: $spacing-4;
+
+      @media (min-width: 768px) {
+        font-size: 1.25rem;
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: $spacing-4;
+
+      .btn-primary {
+        background: $accent-blue;
+        color: $white;
+        padding: 14px 32px;
+        border-radius: $radius-full;
+        font-weight: 600;
+        text-decoration: none;
+        transition: $transition-base;
+        box-shadow: 0 4px 15px rgba($accent-blue, 0.4);
+
+        &:hover {
+          background: darken($accent-blue, 5%);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba($accent-blue, 0.5);
+        }
+      }
+
+      .btn-outline {
+        color: $white;
+        padding: 14px 32px;
+        border-radius: $radius-full;
+        font-weight: 600;
+        text-decoration: none;
+        border: 2px solid rgba($white, 0.3);
+        transition: $transition-base;
+
+        &:hover {
+          background: $white;
+          color: $black;
+          border-color: $white;
+        }
+      }
+    }
+  }
+}
+
+// ================= STATS BANNER =================
+.stats-banner {
+  background: $white;
+  padding: $spacing-8 0;
+  border-bottom: 1px solid $gray-200;
+  position: relative;
+  z-index: 5;
+  margin-top: -40px; // Overlap hero
+  box-shadow: $shadow-md;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: $radius-lg;
+
+  @media (max-width: 768px) {
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: $spacing-2;
+    border-right: 1px solid $gray-100;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: $primary-900;
+      margin-bottom: 0;
+    }
+
+    p {
+      color: $gray-500;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+// ================= SECTIONS GENERAL =================
+.section {
+  padding: $spacing-16 0;
+
+  &.bg-light {
+    background-color: $gray-50;
+  }
+
+  &.bg-white {
+    background-color: $white;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: $spacing-12;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .subtitle {
+      color: $accent-blue;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      display: block;
+      margin-bottom: $spacing-2;
+    }
+
+    h2 {
+      font-family: $font-family-heading;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: $primary-900;
+      margin-bottom: $spacing-4;
+
+      @media (min-width: 768px) {
+        font-size: 3rem;
+      }
+    }
+
+    p {
+      color: $gray-500;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+// ================= WHY CHOOSE US =================
+.why-us-section {
+  .feature-card {
+    background: $white;
+    padding: $spacing-8;
+    border-radius: $radius-lg;
+    border: 1px solid $gray-100;
+    transition: $transition-smooth;
+    height: 100%;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: $shadow-xl;
+      border-color: transparent;
+    }
+
+    .icon-box {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: $spacing-6;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: $primary-900;
+      margin-bottom: $spacing-3;
+    }
+
+    p {
+      color: $gray-500;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// ================= PROJECT PREVIEW CARDS =================
+.project-card {
+  background: $white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: $transition-smooth;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-xl;
+  }
+
+  .card-image {
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba($black, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+
+      .view-btn {
+        background: $white;
+        color: $black;
+        padding: 10px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transform: translateY(20px);
+        transition: transform 0.3s;
+      }
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+
+      .overlay {
+        opacity: 1;
+
+        .view-btn {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .card-content {
+    padding: $spacing-6;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: $primary-900;
+      margin-bottom: $spacing-2;
+    }
+
+    p {
+      color: $gray-500;
+      font-size: 0.9rem;
+      margin-bottom: $spacing-6;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+
+    .text-link {
+      color: $accent-blue;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.9rem;
+
+      &:hover {
+        gap: 8px;
+      }
+    }
+  }
+}
+
+// ================= CLIENTS =================
+.clients-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $spacing-8;
+
+  .client-logo-wrapper {
+    width: 160px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: $transition-base;
+    border: 1px solid $gray-100;
+    border-radius: $radius-md;
+    padding: $spacing-2;
+
+    &:hover {
+      filter: grayscale(0);
+      opacity: 1;
+      background: $white;
+      box-shadow: $shadow-md;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+// ================= CTA SECTION =================
+.cta-section {
+  background: $primary-900;
+  color: $white;
+  text-align: center;
+  padding: $spacing-20 $spacing-4;
+  position: relative;
+  overflow: hidden;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: $spacing-4;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: $gray-300;
+    margin-bottom: $spacing-8;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-white {
+    background: $white;
+    color: $primary-900;
+    padding: 16px 40px;
+    border-radius: $radius-full;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: $transition-base;
+
+    &:hover {
+      background: $gray-100;
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba($black, 0.2);
+    }
+  }
+}

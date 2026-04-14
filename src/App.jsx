@@ -3,56 +3,75 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AnimatedBackground from "./components/AnimatedBackground";
+import ScrollToTop from "./components/ScrollToTop"; // Added import
 
 import Login from "./auth/Login";
-import Cart from "./client/Cart";
+import ProtectedRoute from "./auth/ProtectedRoute"; // Added import
+import AdminRoute from "./admin/AdminRoute"; // Added import
 
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Works from "./pages/Works";
-import WorkDetails from "./pages/WorkDetails";
-import Items from "./pages/Items";
 import Contact from "./pages/Contact";
-import Orders from "./pages/Orders";
-import Checkout from "./pages/Checkout";
-import OrderSuccess from "./pages/OrderSuccess";
+import Items from "./pages/Items"; // Import Items Page
 import ServiceDetails from "./pages/ServiceDetails";
+import Checkout from "./pages/Checkout";
+import OrderHistory from "./pages/OrderHistory"; // Import OrderHistory
+import OrderSuccess from "./pages/OrderSuccess"; // Import OrderSuccess
 
-import Admin from "./pages/Admin";
-import Dashboard from "./admin/Dashboard";        // ✅ FIX
-import AdminOrders from "./admin/AdminOrders";   // ✅ FIX
+import Dashboard from "./admin/Dashboard";
 
 function App() {
-  const darkMode = localStorage.getItem("theme") === "dark";
-
   return (
     <>
-      <AnimatedBackground darkMode={darkMode} />
+      <ScrollToTop />
+      <AnimatedBackground />
       <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/works" element={<Works />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/services/:serviceId" element={<ServiceDetails />} />
+        <Route path="/items" element={<Items />} /> {/* Add Items Route */}
+        <Route path="/login" element={<Login />} />
 
-      <main style={{ padding: "20px" }}>
-        <Routes>
-          {/* ADMIN ROUTES */}
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-          <Route path="/admin/orders" element={<AdminOrders />} />
+        {/* Client Protected Routes */}
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orders"
+          element={
+            <ProtectedRoute>
+              <OrderHistory />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order-success"
+          element={
+            <ProtectedRoute>
+              <OrderSuccess />
+            </ProtectedRoute>
+          }
+        />
 
-          {/* CLIENT ROUTES */}
-          <Route path="/services/:serviceId" element={<ServiceDetails />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/works" element={<Works />} />
-          <Route path="/works/:type" element={<WorkDetails />} />
-          <Route path="/items" element={<Items />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order-success" element={<OrderSuccess />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-
+        {/* Admin Protected Routes */}
+        <Route
+          path="/admin/*"
+          element={
+            <AdminRoute>
+              <Dashboard />
+            </AdminRoute>
+          }
+        />
+      </Routes>
       <Footer />
     </>
   );

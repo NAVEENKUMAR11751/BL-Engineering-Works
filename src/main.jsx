@@ -6,6 +6,7 @@ import AuthProvider from "./auth/AuthContext";
 import CartProvider from "./client/CartContext";
 import { OrderProvider } from "./order/OrderContext";
 import theme from "./theme";
+import { ToastProvider } from "./components/ToastContext";
 
 
 import { HashRouter } from "react-router-dom";
@@ -13,14 +14,15 @@ import { HashRouter } from "react-router-dom";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HashRouter>
-      <AuthProvider>
-        <OrderProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </OrderProvider>
-      </AuthProvider>
+      <ToastProvider>
+        <AuthProvider>
+          <OrderProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </OrderProvider>
+        </AuthProvider>
+      </ToastProvider>
     </HashRouter>
   </React.StrictMode>
 );
-

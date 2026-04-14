@@ -1,13 +1,31 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();
 
-function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  // user = { role: "admin" } OR { role: "client" }
+export const AuthProvider = ({ children }) => {
+  // Initialize from localStorage if available
+  const [user, setUser] = useState(() => {
+    try {
+      const storedUser = localStorage.getItem("user");
+      return storedUser ? JSON.parse(storedUser) : null;
+    } catch (error) {
+      console.error("Failed to parse user from localStorage", error);
+      return null;
+    }
+  });
 
-  const login = (role) => {
-    setUser({ role });
+  // Persist to localStorage whenever user changes
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
+    }
+  }, [user]);
+
+  const login = (userData) => {
+    // userData should include role: 'admin' | 'client'
+    setUser(userData);
   };
 
   const logout = () => {
@@ -19,6 +37,6 @@ function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 export default AuthProvider;

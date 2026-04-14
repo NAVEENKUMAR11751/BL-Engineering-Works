@@ -8,13 +8,13 @@ function Login() {
   const location = useLocation();
 
   function handleAdminLogin() {
-    login("admin");
-    navigate("/admin");
+    login({ username: "Admin User", role: "admin" });
+    navigate("/admin/dashboard");
   }
 
   function handleClientLogin() {
-    login("client");
-    navigate(location.state?.from || "/");
+    login({ username: "Client User", role: "client" });
+    navigate(location.state?.from?.pathname || "/");
   }
 
   return (

@@ -1,0 +1,215 @@
+@import './variables';
+
+.items-page {
+    padding-top: $spacing-8;
+    padding-bottom: $spacing-16;
+    background-color: $gray-50;
+    min-height: 100vh;
+
+    .store-header {
+        text-align: center;
+        margin-bottom: $spacing-8;
+
+        h1 {
+            font-family: $font-family-heading;
+            font-size: 2.5rem;
+            color: $primary-900;
+            margin-bottom: $spacing-2;
+        }
+
+        p {
+            color: $gray-500;
+            font-size: 1.1rem;
+        }
+    }
+
+    .store-layout {
+        display: grid;
+        gap: $spacing-8;
+
+        @media (min-width: 900px) {
+            grid-template-columns: 280px 1fr;
+        }
+
+        // Sidebar
+        .store-sidebar {
+            background: $white;
+            padding: $spacing-6;
+            border-radius: $radius-lg;
+            box-shadow: $shadow-sm;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+
+            h3 {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: $primary-900;
+                margin-bottom: $spacing-4;
+                display: flex;
+                align-items: center;
+                gap: $spacing-2;
+            }
+
+            .search-box {
+                margin-bottom: $spacing-6;
+
+                input {
+                    width: 100%;
+                    padding: $spacing-3;
+                    border: 1px solid $gray-300;
+                    border-radius: $radius-md;
+                    transition: $transition-base;
+
+                    &:focus {
+                        outline: none;
+                        border-color: $accent-blue;
+                        box-shadow: 0 0 0 3px rgba($accent-blue, 0.1);
+                    }
+                }
+            }
+
+            .filter-group {
+                display: flex;
+                flex-direction: column;
+                gap: $spacing-2;
+
+                button {
+                    text-align: left;
+                    background: transparent;
+                    border: none;
+                    padding: $spacing-2 $spacing-3;
+                    border-radius: $radius-md;
+                    color: $gray-600;
+                    cursor: pointer;
+                    transition: $transition-base;
+                    font-weight: 500;
+
+                    &:hover {
+                        background: $gray-50;
+                        color: $primary-900;
+                    }
+
+                    &.active {
+                        background: rgba($accent-blue, 0.1);
+                        color: $accent-blue;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+
+        // Product Grid
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: $spacing-6;
+
+            .product-card {
+                background: $white;
+                border-radius: $radius-lg;
+                overflow: hidden;
+                border: 1px solid $gray-200;
+                transition: $transition-smooth;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+
+                &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: $shadow-lg;
+                    border-color: rgba($accent-blue, 0.3);
+
+                    .add-btn {
+                        background-color: $accent-blue;
+                        color: $white;
+                    }
+                }
+
+                .card-image {
+                    height: 200px;
+                    padding: $spacing-4;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: $white;
+                    border-bottom: 1px solid $gray-50;
+
+                    img {
+                        max-width: 100%;
+                        max-height: 100%;
+                        object-fit: contain;
+                        transition: transform 0.3s;
+                    }
+                }
+
+                .card-details {
+                    padding: $spacing-4;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+
+                    h4 {
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: $primary-900;
+                        margin-bottom: $spacing-1;
+                        line-height: 1.4;
+                    }
+
+                    .price {
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        color: $accent-blue;
+                        margin-bottom: $spacing-4;
+                    }
+
+                    .actions {
+                        margin-top: auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: $spacing-2;
+
+                        .qty-control {
+                            display: flex;
+                            align-items: center;
+                            border: 1px solid $gray-300;
+                            border-radius: $radius-md;
+
+                            button {
+                                background: transparent;
+                                border: none;
+                                padding: $spacing-1 $spacing-2;
+                                cursor: pointer;
+                                color: $gray-500;
+
+                                &:hover {
+                                    color: $primary-900;
+                                }
+                            }
+
+                            span {
+                                font-weight: 600;
+                                padding: 0 $spacing-2;
+                                font-size: 0.9rem;
+                            }
+                        }
+
+                        .add-btn {
+                            flex: 1;
+                            background: $gray-100;
+                            color: $primary-900;
+                            border: none;
+                            padding: $spacing-2;
+                            border-radius: $radius-md;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: $transition-base;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

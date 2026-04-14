@@ -1,0 +1,521 @@
+﻿
+> bl-engineering@0.0.0 build
+> vite build
+
+[36mvite v7.3.0 [32mbuilding client environment for production...[36m[39m
+transforming...
+node.exe : 
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (DEPRECA   
+ TION WAR...art S    
+ass 3.0.0.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\Footer
+.scss 1:9  root 
+stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\OrderH
+istory.scss 1:9  
+root stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\Servic
+eDetails.scss 1:9  
+root stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\OrderS
+uccess.scss 1:9  
+root stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\About.
+scss 1:9  root 
+stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\Checko
+ut.scss 1:9  root 
+stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    
+src\styles\Home.scss 
+1:9  root stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\Items.
+scss 1:9  root 
+stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\Header
+.scss 1:9  root 
+stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\Works.
+scss 1:9  root 
+stylesheet
+
+DEPRECATION WARNING 
+[import]: Sass 
+@import rules are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+  Γò╖
+1 Γöé @import 
+'./variables';
+  Γöé         
+^^^^^^^^^^^^^
+  Γò╡
+    src\styles\AdminD
+ashboard.scss 1:9  
+root stylesheet
+
+DEPRECATION WARNING 
+[global-builtin]: 
+Global built-in 
+functions are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+Use color.adjust 
+instead.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+   Γò╖
+69 Γöé               
+      background: 
+darken($accent-blue, 
+10%);
+   Γöé               
+                  ^^^
+^^^^^^^^^^^^^^^^^^^^^
+^
+   Γò╡
+    src\styles\OrderS
+uccess.scss 69:33  
+root stylesheet
+
+DEPRECATION WARNING 
+[color-functions]: 
+darken() is 
+deprecated. 
+Suggestions:
+
+color.scale($color, 
+$lightness: 
+-16.7213114754%)
+color.adjust($color, 
+$lightness: -10%)
+
+More info: https://sa
+ss-lang.com/d/color-f
+unctions
+
+   Γò╖
+69 Γöé               
+      background: 
+darken($accent-blue, 
+10%);
+   Γöé               
+                  ^^^
+^^^^^^^^^^^^^^^^^^^^^
+^
+   Γò╡
+    src\styles\OrderS
+uccess.scss 69:33  
+root stylesheet
+
+DEPRECATION WARNING 
+[global-builtin]: 
+Global built-in 
+functions are 
+deprecated and will 
+be removed in Dart 
+Sass 3.0.0.
+Use color.adjust 
+instead.
+
+More info and 
+automated migrator: h
+ttps://sass-lang.com/
+d/import
+
+   Γò╖
+97 Γöé         
+background-color: 
+darken($primary-900, 
+3%);
+   Γöé               
+            ^^^^^^^^^
+^^^^^^^^^^^^^^^
+   Γò╡
+    src\styles\Footer
+.scss 97:27  root 
+stylesheet
+
+DEPRECATION WARNING 
+[color-functions]: 
+darken() is 
+deprecated. 
+Suggestions:
+
+color.scale($color, 
+$lightness: -61.2%)
+color.adjust($color, 
+$lightness: -3%)
+
+More info: https://sa
+ss-lang.com/d/color-f
+unctions
+
+   Γò╖
+97 Γöé         
+background-color: 
+darken($primary-900, 
+3%);
+   Γöé               
+            ^^^^^^^^^
+^^^^^^^^^^^^^^^
+   Γò╡
+    src\styles\Footer
+.scss 97:27  root 
+stylesheet
+
+[32mΓ£ô[39m 881 modules transformed.
+[31mΓ£ù[39m Build 
+failed in 2.26s
+[31merror during 
+build:
+[31m[vite:css] 
+[sass] Undefined 
+variable.
+   Γò╖
+85 Γöé               
+      border-color: 
+$category-civil-dark;
+   Γöé               
+                    
+^^^^^^^^^^^^^^^^^^^^
+   Γò╡
+  src\styles\OrderSuc
+cess.scss 85:35  
+root stylesheet[31m
+file: [36mC:/Study-R
+oom/Copy or Clone BL 
+Engineering WOrks/bl-
+engineering/src/style
+s/OrderSuccess.scss[
+31m
+[33m
+[sass] Undefined 
+variable.
+   Γò╖
+85 Γöé               
+      border-color: 
+$category-civil-dark;
+   Γöé               
+                    
+^^^^^^^^^^^^^^^^^^^^
+   Γò╡
+  src\styles\OrderSuc
+cess.scss 85:35  
+root stylesheet
+[31m
+Error: Undefined 
+variable.
+   Γò╖
+85 Γöé               
+      border-color: 
+$category-civil-dark;
+   Γöé               
+                    
+^^^^^^^^^^^^^^^^^^^^
+   Γò╡
+  src\styles\OrderSuc
+cess.scss 85:35  
+root stylesheet
+    at 
+Object.wrapException 
+(C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:2337:47)
+    at 
+C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:90581:23
+    at _wrapJsFunctio
+nForAsync_closure.$pr
+otected 
+(C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:5005:15)
+    at _wrapJsFunctio
+nForAsync_closure.cal
+l$2 
+(C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:38505:12)
+    at Object._asyncS
+tartSync 
+(C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:4969:20)
+    at _EvaluateVisit
+or2.visitVariableExpr
+ession$body$_Evaluate
+Visitor0 
+(C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:90587:16)
+    at _EvaluateVisit
+or2.visitVariableExpr
+ession$1 
+(C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:90561:19)
+    at VariableExpres
+sion0.accept$1$1 
+(C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:128275:22)
+    at VariableExpres
+sion0.accept$1 
+(C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:128278:19)
+    at 
+C:\Study-Room\Copy 
+or Clone BL 
+Engineering WOrks\bl-
+engineering\node_modu
+les\sass\sass.dart.js
+:88642:41[39m
